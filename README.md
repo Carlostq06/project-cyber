@@ -143,3 +143,65 @@ Para mitigar los riesgos del modelo STRIDE, se definen las siguientes directrice
 *   Microsoft. (2022, 14 de noviembre). *The STRIDE Threat Modeling Framework*. Microsoft Security Best Practices. https://learn.microsoft.com/en-us/security/engineering/stride
 *   OWASP Top 10. (2021). *The Ten Most Critical Web Application Security Risks*. Open Web Application Security Project. https://owasp.org/www-project-top-ten/
 *   Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos (*Reglamento General de Protección de Datos*). Diario Oficial de la Unión Europea, L 119, 4 de mayo de 2016.
+
+
+# Plan de Respuesta ante Incidentes y Continuidad del Negocio
+
+Este repositorio contiene los apuntes, diagnósticos y ejercicios prácticos relacionados con la gestión de incidentes de seguridad, estrategias de respaldo y análisis de casos reales.
+
+---
+
+## 📋 Ejercicio 1: Fundamentos de Continuidad y Recuperación
+
+### 1. El Diagnóstico
+* **MTD (Tiempo Máximo Tolerable):** Cuánto tiempo puede estar el sistema caído antes de que el proyecto fracase por completo.
+* **RTO (Objetivo de Tiempo):** El temporizador de la cocina. Cuántas horas/días tienen para levantar el sistema desde que se cae.
+* **RPO (Objetivo de Punto de Recuperación):** Cuánto progreso o datos de pruebas se permiten perder (ej. *"toleramos perder solo las últimas 4 horas de código"*).
+
+### 2. La Estrategia de Respaldo (Regla 3-2-1)
+* **3 copias de datos:** El entorno de pruebas activo y al menos dos copias extras.
+* **2 soportes distintos:** Guardar los respaldos en tecnologías diferentes (ej. el disco local y un servidor en la nube).
+* **1 copia fuera del sitio:** Un respaldo completamente aislado de la red principal (*offsite*) por si la oficina explota o se inunda.
+
+### 3. ¿Dónde revivimos el muerto? (Tipos de Sitios)
+* **Sitio Hot (Caliente):** Una réplica exacta. Levanta en minutos, pero es carísimo.
+* **Sitio Warm (Templado):** El hardware está listo, pero hay que configurar e instalar los últimos respaldos. Toma horas o días.
+* **Sitio Cold (Frío):** Solo el espacio físico/virtual vacío. Hay que configurar todo desde cero. Toma semanas.
+
+### 4. El Plan de Acción
+* **Fase 1: Activación y Notificación:** Alguien nota la falla, se evalúa la gravedad del daño y se avisa de inmediato a los afectados y al coordinador del plan.
+* **Fase 2: Recuperación:** Se ejecuta la magia técnica: levantar servidores alternos, jalar los respaldos (completos o incrementales) y reconectar las interfaces de datos.
+* **Fase 3: Reconstitución:** Se prueba que el sistema funcione bien, se valida que los datos no estén corruptos, se limpia cualquier acceso temporal de la crisis y se le devuelve el control a los usuarios.
+
+### 5. Pruebas y Simulacros
+* **Simulacro de Mesa (Tabletop):** Sentarse con café a discutir paso a paso qué haría el grupo si un atacante borra la base de datos.
+* **Prueba Funcional:** Un simulacro real (en un entorno controlado) para verificar si los archivos de respaldo realmente abren y funcionan.
+
+---
+
+## 🔎 Ejercicio 2
+*(Sección pendiente de desarrollo / Vacía en el documento original)*
+
+---
+
+## 🛡️ Ejercicio 3: Roles en Ciberseguridad (CSIRT vs. SOC)
+
+>
+> * **CSIRT:** Es un equipo que se encarga de actuar una vez ya ha ocurrido la incidencia para mitigar los daños y erradicar el problema.
+> * **SOC:** Es el equipo que se encarga de monitorear la app en busca de actividades sospechosas y posibles amenazas, previniendo los ataques a tiempo.
+
+---
+
+## 📉 Ejercicio 4: Análisis de Caso - Anhalt-Bitterfeld
+
+### El Incidente
+El caso de Anhalt-Bitterfeld consistió en un **ataque de ransomware** a un distrito rural de 150.000 habitantes en Alemania que dejó a todos los ciudadanos sin servicios gubernamentales importantes.
+
+### Vectores de Fallo y Vulnerabilidades
+* **Sistemas desactualizados:** El ataque se logró con éxito debido a que los sistemas estaban muy desactualizados para ahorrar costes.
+* **Falta de aislamiento de Backups:** Como el backup estaba en la misma red, los atacantes también lograron encriptarlo.
+* **Dependencia digital absoluta:** Al haber digitalizado todo, no tenían un respaldo físico para hacer los trámites sin tecnología durante la crisis.
+
+### Lecciones Aprendidas
+1. **Actualización continua:** Siempre hay que tener los equipos actualizados; aunque suponga un coste mayor, es muy fácil que entren al sistema y el daño final sea mucho mayor que el ahorro inicial.
+2. **Aislamiento estricto (*Air-Gapping*):** Es imprescindible contar con un backup totalmente aislado del sistema para evitar que puedan
