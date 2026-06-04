@@ -208,7 +208,28 @@ El caso de Anhalt-Bitterfeld consistió en un **ataque de ransomware** a un dist
 
 
 
+---
 
+## 📢 Ejercicio 5: Campaña de Concienciación - Phishing
+
+Esta campaña consiste en distribuir una serie de carteles informativos en todos los centros médicos, así como publicarlos semanalmente en la página principal de la web/app y en redes sociales. Los carteles se actualizarán dinámicamente según las tendencias de ataques detectadas e incorporarán canales de soporte para una mejor trazabilidad y asistencia al usuario.
+
+### 🖼️ Diseños de Cartelería Actuales
+
+#### Cartel 1: Pautas Básicas de Seguridad
+*   **1. Protección de información:** Recuerde no enviar información sensible como datos personales o bancarios por correo electrónico.
+*   **2. Prevención de enlaces y descargas:** Evite hacer clic en enlaces o descargar archivos de procedencia desconocida.
+*   **3. Control de credenciales:** No ingrese contraseñas si un enlace o sitio web le parece sospechoso.
+
+#### Cartel 2: Protocolo de Acción Rápida (Para, Piensa, Actúa)
+> **¡Cuidado con el Phishing!** Protege tus datos personales y de salud.
+*   🛑 **PARA:** No hagas clic en nada.
+*   🧠 **PIENSA:** ¿Es realmente el hospital? (Sospecha si hay urgencia falsa, si el remitente es desconocido o si piden tu DNI o contraseña).
+*   📞 **ACTÚA:** Llama al número oficial.
+
+---
+
+#### Cartel 3: Infografía Detallada para Pacientes y Personal
 
 ## 📊 Matriz de Amenazas y Análisis de Riesgos
 
