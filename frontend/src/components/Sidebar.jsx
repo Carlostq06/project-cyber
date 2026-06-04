@@ -19,10 +19,10 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar__brand">
-        <div className="sidebar__logo">V</div>
+        <div className="sidebar__logo">CS</div>
         <div>
-          <div className="sidebar__name">Vita Clinic</div>
-          <div className="sidebar__tag">Medical Studio</div>
+          <div className="sidebar__name">Clinica Segura</div>
+          <div className="sidebar__tag">Panel operativo</div>
         </div>
       </div>
       <nav className="sidebar__nav">
@@ -38,10 +38,10 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="sidebar__profile">
-        <div className="sidebar__avatar">EV</div>
+        <div className="sidebar__avatar">QA</div>
         <div>
-          <div className="sidebar__profile-name">Dr. E. Vance</div>
-          <div className="sidebar__profile-role">Clinic Director</div>
+          <div className="sidebar__profile-name">Equipo Clinico</div>
+          <div className="sidebar__profile-role">Operacion diaria</div>
         </div>
       </div>
     </aside>

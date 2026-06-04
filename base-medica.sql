@@ -6,7 +6,7 @@ USE `consultorio_medico`;
 -- 1. Registro de Pacientes
 CREATE TABLE `Pacientes` (
   `id_paciente` INT NOT NULL AUTO_INCREMENT,
-  `dni` VARCHAR(20) NOT NULL UNIQUE, -- Debe ir cifrado a nivel de aplicación
+  `dni` VARCHAR(255) NOT NULL UNIQUE, -- Debe ir cifrado a nivel de aplicación
   `nombre` VARCHAR(100) NOT NULL,
   `apellidos` VARCHAR(100) NOT NULL,
   `fecha_nacimiento` DATE NOT NULL,
