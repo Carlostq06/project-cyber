@@ -205,3 +205,28 @@ El caso de Anhalt-Bitterfeld consistió en un **ataque de ransomware** a un dist
 ### Lecciones Aprendidas
 1. **Actualización continua:** Siempre hay que tener los equipos actualizados; aunque suponga un coste mayor, es muy fácil que entren al sistema y el daño final sea mucho mayor que el ahorro inicial.
 2. **Aislamiento estricto (*Air-Gapping*):** Es imprescindible contar con un backup totalmente aislado del sistema para evitar que puedan
+
+
+
+
+
+## 📊 Matriz de Amenazas y Análisis de Riesgos
+
+A continuación se detalla la matriz de análisis de riesgos basada en el modelo de amenazas (STRIDE) adaptado para el entorno de la plataforma médica:
+
+| Amenaza / Vulnerabilidad | Descripción | Impacto | Nivel de Riesgo | Medida de Mitigación Propuesta |
+| :--- | :--- | :--- | :---: | :--- |
+| **Suplantación de Identidad** *(Spoofing)* | Acceso no autorizado de atacantes haciéndose pasar por personal médico o pacientes. | Alto | **Crítico** | Implementar autenticación multifactor (MFA) obligatoria y control de acceso basado en roles (RBAC). |
+| **Alteración de Datos** *(Tampering)* | Modificación maliciosa de historiales clínicos, recetas o parámetros de monitoreo en tránsito o base de datos. | Crítico | **Crítico** | Cifrado de datos en reposo y en tránsito (TLS 1.3), uso de firmas digitales y validación estricta de inputs. |
+| **Repudio** *(Repudiation)* | Imposibilidad de asociar una acción crítica (ej. borrar un registro médico) a un usuario específico por falta de registros. | Medio | **Medio** | Implementación de logs de auditoría inmutables y centralizados (auditing exhaustivo de eventos). |
+| **Filtración de Información** *(Information Disclosure)* | Exposición involuntaria o robo de datos médicos confidenciales (datos protegidos/GDPR). | Crítico | **Crítico** | Segmentación de la red, enmascaramiento de datos sensibles y auditorías periódicas de permisos en la base de datos. |
+| **Denegación de Servicio** *(DoS)* | Ataques distribuidos que saturan el servidor de la aplicación, impidiendo el acceso a citas o alertas médicas en tiempo real. | Alto | **Alto** | Configuración de Rate Limiting, uso de un Web Application Firewall (WAF) y balanceadores de carga con mitigación DDoS. |
+| **Elevación de Privilegios** *(Elevation of Privilege)* | Un usuario con rol básico (ej. paciente) explota una vulnerabilidad para obtener permisos de administrador o médico. | Crítico | **Crítico** | Principio de mínimo privilegio, sanitización estricta de tokens de sesión (JWT) y validación de permisos en el lado del servidor (*backend*). |
+
+---
+
+### 🛡️ Controles Técnicos y Recomendaciones de Infraestructura
+
+* **Seguridad Perimetral:** Despliegue de un **Web Application Firewall (WAF)** para filtrar tráfico malicioso antes de que alcance la aplicación.
+* **Cifrado Estricto:** Uso de algoritmos de cifrado fuerte para proteger la información médica tanto cuando se almacena como cuando viaja por la red.
+* **Segmentación de Redes:** Separar la base de datos de historiales clínicos del servidor web público para mitigar movimientos laterales en caso de intrusión.
